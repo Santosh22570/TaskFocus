@@ -15,8 +15,13 @@ export default function App() {
   });
 
   const addTask = (task) => {
-    setTasks([...tasks,task]);
+  if (!task.text || !task.text.trim()) {
+    alert("Please enter a task");
+    return; // ✅ IMPORTANT (stop execution)
   }
+
+  setTasks([...tasks, task]);
+};
 
   const updateTask = (updatedTask, index) => {
     const newtask = [...tasks];
